@@ -1,0 +1,56 @@
+﻿@using SerialNotes.Models
+@model NotesSQL
+
+<div id="modal" class="modal">
+    <div class="modal-dialog modal-note-edit">
+        <div class="modal-content">
+
+            <form data-edit class="form-add" asp-action="Edit" asp-controller="Home">
+                <input asp-for="NoteId" type="hidden" value="@Model.NoteId" />
+                <div class="form-add__group">
+                    <div class="form-add__item form-add__title">
+                        <label class="form-add__label" asp-for="NoteTitle"></label>
+                        <input class="title__input" asp-for="NoteTitle" type="text" autocomplete="off" />
+                    </div>
+                    <div class="form-add__item ">
+                        <label class="form-add__label" asp-for="DateAdding"></label>
+                        <input data-date-picker asp-for="DateAdding" type="date" />
+                    </div>
+                </div>
+                <div class="form-add__group">
+                    <div class="form-add__item form-add__serial-name">
+                        <label class="form-add__label" asp-for="SerialName"></label>
+                        <div class="serial-name__input-sec">
+                            <input data-serial-name class="serial-name__input" asp-for="SerialName" type="text" autocomplete="off" />
+                            <div onclick="OpenListSerial()" class="btn__form"><i class="fas fa-list-ul"></i></div>
+                        </div>
+                    </div>
+                    <div class="form-add__item form-add_num">
+                        <label class="form-add__label" asp-for="Part"></label>
+                        <input data-part-season class="input__num" asp-for="Part" type="number" autocomplete="off" min="0" />
+                    </div>
+                    <div class="form-add__item form-add_num">
+                        <label class="form-add__label" asp-for="Season"></label>
+                        <input data-part-season class="input__num" asp-for="Season" type="number" autocomplete="off" min="0" />
+                    </div>
+                    <div class="form-add__item form-add_num">
+                        <label class="form-add__label" asp-for="Rating"></label>
+                        <input class="input__num" asp-for="Rating" type="number" autocomplete="off" min="1" max="5" />
+                    </div>
+                </div>
+                <div class="form-add__item">
+                    <label class="form-add__label" asp-for="Comment"></label>
+                    <textarea class="form-add__textarea" asp-for="Comment">
+        
+                    </textarea>
+                </div>
+                <div class="form-edit__footer">
+                    <input type="submit" class="btn__form" name="name" value="Сохранить" />
+                    <input type="button" class="btn__form" onclick="CloseModal()" value="Отмена"/>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

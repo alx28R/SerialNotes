@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialNotes", "SerialNotes\SerialNotes.csproj", "{B20F76D4-1306-4F95-8BE2-90FEDD5D6CC6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B20F76D4-1306-4F95-8BE2-90FEDD5D6CC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B20F76D4-1306-4F95-8BE2-90FEDD5D6CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B20F76D4-1306-4F95-8BE2-90FEDD5D6CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B20F76D4-1306-4F95-8BE2-90FEDD5D6CC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {76E08A61-8AE1-4A42-BE12-1CD3F02BC20B}
+	EndGlobalSection
+EndGlobal

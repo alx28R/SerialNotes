@@ -1,0 +1,21 @@
+﻿@using SerialNotes
+@model int; 
+
+
+<div id="modal-notify" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <h2>Уведомление</h2>
+            <div class="notify-content">
+            @if(@Model != 0){
+                <p>Заметка добавленка</p>
+            }
+            else
+            {
+                <p>Ошибка добавления</p>
+            }
+            </div>
+           <button data-close type="button" class="btn__form"s>ок</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿.header {
+    background: #f3f3f3;
+    border-bottom: 1px solid #cccccccc;
+
+}
+
+.header-inner {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    text-transform: uppercase;
+}
+
+.logo__title {
+    color: #8172b0;
+    letter-spacing: 3px;
+}
+
+.logo__subtitle {
+    font-weight: 200;
+    color: #292929;
+    letter-spacing: 2px;
+}
+
+.header__nav {
+    max-width: 470px;
+    width: 100%;
+}
+
+.nav-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

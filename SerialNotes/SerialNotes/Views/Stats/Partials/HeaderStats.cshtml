@@ -1,0 +1,13 @@
+﻿
+
+    <div class="stats__header-stats">
+        <h3 class="title">Статистика</h3>
+        <nav class="stats__nav">
+            <ul class="stats__nav-items">
+                <li><a data-btn class="btn btn__filter_activ" onclick="StatsRender('@Url.Action("ListStats", "Stats", new {point = 0 }, Context.Request.Scheme)')">Всего серий</a></li>
+                <li><a data-btn class="btn" onclick="StatsRender('@Url.Action("ListStats", "Stats", new {point = 1 }, Context.Request.Scheme)')">Серий за месяц</a></li>
+                <li><a data-btn class="btn" onclick="StatsRender('@Url.Action("ListStats", "Stats", new {point = 2 }, Context.Request.Scheme)')">Серий за год</a></li>
+                <li><a data-btn class="btn" onclick="StatsRender('@Url.Action("ListStats", "Stats", new {point = 3 }, Context.Request.Scheme)')">Средний рейтиг</a></li>
+            </ul>
+        </nav>
+    </div>

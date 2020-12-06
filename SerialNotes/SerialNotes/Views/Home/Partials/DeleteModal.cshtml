@@ -1,0 +1,23 @@
+﻿@using SerialNotes.Models
+@model Notes; 
+
+<div id="modal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form data-del class="confirm-form" asp-action="Delete" asp-controller="Home" asp-route-id="@Model.NoteId">
+                <div class="confirm-form__header">
+                    <h2 class="confirm-form__title">Удаление</h2>
+                    <a id="close-btn" class="btn"><i class="fas fa-times"></i></a>
+                </div>
+               
+                <p class="confirm-form__content">Вы действително хотите удалить данную записку?</p>
+                <input type="hidden" asp-for="@Model.NoteId">
+                <div class="confirm-form__foooter">
+                    <input id="del-btn" type="submit" class="btn__form" value="Удалить" />
+                    <a id="close-btn" class="btn__form form-close">отмена</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

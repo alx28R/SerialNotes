@@ -1,0 +1,22 @@
+﻿@using SerialNotes.Models
+@model IEnumerable<Serials> 
+
+
+<div id="modal-serial-list" class="modal hidden">
+    <div class="modal-dialog modal-serial-list">
+        <div class="modal-content">
+            <div class="serial-modal__header">
+                <h2>Список фильмов</h2>
+                <a id="close-btn"  class="btn"><i class="fas fa-times"></i></a>
+            </div>
+            <div class="serial-modal__content">
+                @foreach (var el in Model)
+                {
+                    <div data-serial-selected class="serial-modal__el">
+                        <h3>@el.SerialName</h3>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
