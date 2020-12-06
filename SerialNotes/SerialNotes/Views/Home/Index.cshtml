@@ -1,0 +1,22 @@
+﻿@using SerialNotes.ViewModels
+@model NotesVM
+
+@{
+    ViewData["Title"] = "SN - Заметки";
+}
+
+    <section class="notes">
+        <div class="container">
+            <div class="notes-inner">
+
+                @await Html.PartialAsync("Partials/HeaderNotes", Model.Search)
+                @await Html.PartialAsync("Partials/ContentNotes", Model.ListNotes)
+                @await Html.PartialAsync("Partials/SerialList", Model.Serials)
+            </div>
+        </div>
+    </section>
+
+
+@section Scripts{
+    <script src="~/js/notes-script.js"></script>
+}

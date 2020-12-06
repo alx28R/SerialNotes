@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="/css/all.min.css" rel="stylesheet" />
+    <link href="~/css/fonts.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/header.css" rel="stylesheet" />
+    <link href="~/css/notes.css" rel="stylesheet" />
+    <link href="~/css/add.css" rel="stylesheet" />
+    <link href="~/css/stats.css" rel="stylesheet" />
+    
+</head>
+<body>
+    @await Html.PartialAsync("Partials/Header")
+    <main>
+        @RenderBody()
+    </main>
+
+    <script src="~/js/all.min.js"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
+
+

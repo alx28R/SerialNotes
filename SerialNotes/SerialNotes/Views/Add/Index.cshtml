@@ -1,0 +1,22 @@
+﻿@using SerialNotes.ViewModels;
+@model SerialsVM
+
+@{
+    ViewData["Title"] = "SN - Добавление";
+}
+
+<section class="add">
+    <div class="container">
+        <div class="add-inner">
+
+            @await Html.PartialAsync("Partials/HeaderAdd")
+            @await Html.PartialAsync("Partials/ContentAdd", @Model)
+
+        </div>
+    </div>
+</section>
+
+
+@section Scripts{
+    <script src="~/js/add-script.js"></script>
+}

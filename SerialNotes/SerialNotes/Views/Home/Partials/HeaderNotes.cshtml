@@ -1,0 +1,17 @@
+﻿@using SerialNotes.Models
+@model Search
+
+    <div class="notes__header-notes  header-notes">
+        <div class="header-notes__title-container">
+            <h3 class="title">Заметки</h3>
+        </div>
+
+        <div class="header-notes__search">
+            <form data-search asp-action="Search" class="header-notes__form-search" onsubmit="Search(this); return false;">
+                <input data-adding-date asp-for="Date" type="date" />
+                <input data-text asp-for="Text" class="input-search" type="text" placeholder="название или комментарий" />
+                <button data-search class="btn__form"><i class="fas fa-search"></i></button>
+            </form>
+            <button data-clear class="btn__form header-notes__btn-clear" onclick="SearchClear()"><i class="fas fa-times"></i></button>
+        </div>
+    </div>

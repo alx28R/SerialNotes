@@ -1,0 +1,50 @@
+﻿@using SerialNotes.ViewModels
+@model  SerialsVM
+
+    <div>
+
+        <form class="form-add" asp-action="Add" asp-controller="Add" onsubmit="Add(this); return false;">
+
+            <div class="form-add__group">
+                <div class="form-add__item form-add__title">
+                    <label class="form-add__label" asp-for="Notes.NoteTitle"></label>
+                    <input class="title__input" asp-for="Notes.NoteTitle" type="text" autocomplete="off" />
+                </div>
+                <div class="form-add__item ">
+                    <label class="form-add__label" asp-for="Notes.DateAdding"></label>
+                    <input data-date-picker asp-for="Notes.DateAdding" type="date" />
+                </div>
+            </div>
+            <div class="form-add__group">
+                <div class="form-add__item form-add__serial-name">
+                    <label class="form-add__label" asp-for="Notes.SerialName"></label>
+                    <div class="serial-name__input-sec">
+                        <input data-serial-name class="serial-name__input" asp-for="Notes.SerialName" type="text" autocomplete="off" />
+                        <div onclick="OpenListSerial(); return false;" class="btn__form"><i class="fas fa-list-ul"></i></div>
+                    </div>
+                </div>
+                <div class="form-add__item form-add_num">
+                    <label class="form-add__label" asp-for="Notes.Part"></label>
+                    <input data-part-season class="input__num" asp-for="Notes.Part" type="number" autocomplete="off" min="0" />
+                </div>
+                <div class="form-add__item form-add_num">
+                    <label class="form-add__label" asp-for="Notes.Season"></label>
+                    <input data-part-season class="input__num" asp-for="Notes.Season" type="number" autocomplete="off" min="0" />
+                </div>
+                <div class="form-add__item form-add_num">
+                    <label class="form-add__label" asp-for="Notes.Rating"></label>
+                    <input class="input__num" asp-for="Notes.Rating" type="number" autocomplete="off" min="1" max="5" />
+                </div>
+            </div>
+            <div class="form-add__item">
+                <label class="form-add__label" asp-for="Notes.Comment"></label>
+                <textarea class="form-add__textarea" asp-for="Notes.Comment">
+        
+            </textarea>
+            </div>
+            <div class="form-add__item form-add__submit">
+                <input type="submit" name="name" value="Добавить"/>
+            </div>
+        </form>
+        @await Html.PartialAsync("Partials/SerialList", Model.Serials)
+    </div>

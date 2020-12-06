@@ -1,0 +1,41 @@
+﻿@using SerialNotes.Models
+@model IEnumerable<NotesSQL>
+
+    <div data-content-notes>
+        @if (Model.Count() == 0)
+        {
+            <div class="content-notes">
+                <h1>Упс! Ничего не найдено</h1>
+
+            </div>
+        }
+        else
+        {
+            <div class="content-notes__notes-container">
+                @foreach (var note in Model)
+                {
+                    <div data-note data-noteId="@note.NoteId" class="content-notes__note note">
+                        <div class="note__header">
+                            <h3 class="note__title">@note.NoteTitle</h3>
+                            <p>@note.DateAdding.ToString("dd.MM.yyyy")</p>
+                        </div>
+                        <div class="note__serial-section">
+                            <p>@note.SerialName <span>@note.Season</span>-<span>@note.Part</span> </p>
+                            <p><i class="fas fa-star"></i>@note.Rating</p>
+                        </div>
+                        <div class="note_comment">
+                            <p>@note.Comment</p>
+                        </div>
+                        <div class="note__settings">
+                            <a data-note-edit class="btn" onclick="EditModal('@Url.Action("Edit", "Home", new { id = note.NoteId}, Context.Request.Scheme)')"><i class="fas fa-edit"></i></a>
+                            <a data-note-del class="btn" onclick="DeleteModal('@Url.Action("Delete", "Home", new { id = note.NoteId }, Context.Request.Scheme)')"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </div>
+
+                }
+            </div>
+            
+        }
+    </div>
+
+
