@@ -10,7 +10,7 @@ namespace SerialNotes.ViewModels
     {
         public Search Search { get; set; }
         public IEnumerable<NotesSQL> ListNotes { get; set; }
-        public IEnumerable<Serials> Serials { get; set; }
+        public IEnumerable<SerialsSQL> Serials { get; set; }
 
     }
 }

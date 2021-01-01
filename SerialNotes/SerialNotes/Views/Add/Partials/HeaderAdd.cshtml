@@ -1,5 +1,11 @@
 ﻿<div class="add__header-add  header-add">
     <div class="header-add__title-container">
-        <h3 class="title">Новая заметка</h3>
+        <h3 class="title">Добавление</h3>
     </div>
+    <nav>
+        <ul class="stats__nav-items">
+            <li><a data-btn-add class="btn btn__filter_activ" onclick="AddView('@Url.Action("AddNotes", "Add", null, Context.Request.Scheme)')">Добавление заметки</a></li>
+            <li><a data-btn-add class="btn" onclick="AddView('@Url.Action("AddSerial", "Add", null, Context.Request.Scheme)')">Добавление сериала</a></li>
+        </ul>
+    </nav>
 </div>

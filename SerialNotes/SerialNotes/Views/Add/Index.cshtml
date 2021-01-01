@@ -10,8 +10,9 @@
         <div class="add-inner">
 
             @await Html.PartialAsync("Partials/HeaderAdd")
-            @await Html.PartialAsync("Partials/ContentAdd", @Model)
-
+            <div data-add-content>
+                @await Html.PartialAsync("Partials/AddNotes", @Model)
+            </div>
         </div>
     </div>
 </section>

@@ -89,21 +89,43 @@ async function EditModal(url) {
     })
 
     const form = document.querySelector('[data-edit]');
-    form.addEventListener('submit', async(e) => {
-        e.preventDefault();
-        await fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form)
-        }).then(res => {
-            return res.json()
-        }).then(data => {
-            const contentNotes = document.querySelector('[data-content-notes]')
-            contentNotes.innerHTML = data.renderHtml
-        })
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (FormValid(form) === true) {
+                await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form)
+                }).then(res => {
+                    return res.json()
+                }).then(data => {
+                    const contentNotes = document.querySelector('[data-content-notes]')
+                    contentNotes.innerHTML = data.renderHtml
+                })
 
-        const modal = document.querySelector('#modal')
-        modal.parentNode.removeChild(modal)
-    })
+                const modal = document.querySelector('#modal')
+                modal.parentNode.removeChild(modal)
+            }
+
+        })
+}
+
+function FormValid(form) {
+    let result = true;
+    const validInput = [1, 3, 4, 5, 6, 7, 8];
+    Array.from(form.elements).forEach((element, i) => {
+        validInput.forEach(index => {
+            if (i === index) {
+                if (element.value === null || element.value === '') {
+                    element.classList.add('err');
+                    element.addEventListener('focus', () => {
+                        element.classList.remove('err')
+                    })
+                    result = false;
+                }
+            }
+        })
+    });
+    return result;
 }
 
 

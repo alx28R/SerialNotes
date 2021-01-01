@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alxan\\Desktop\\SerialNotes\\SerialNotes\\SerialNotes\\SerialNotes.csproj": {}
+    "C:\\Users\\alxan\\Git\\SerialNotes\\SerialNotes\\SerialNotes\\SerialNotes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alxan\\Desktop\\SerialNotes\\SerialNotes\\SerialNotes\\SerialNotes.csproj": {
+    "C:\\Users\\alxan\\Git\\SerialNotes\\SerialNotes\\SerialNotes\\SerialNotes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alxan\\Desktop\\SerialNotes\\SerialNotes\\SerialNotes\\SerialNotes.csproj",
+        "projectUniqueName": "C:\\Users\\alxan\\Git\\SerialNotes\\SerialNotes\\SerialNotes\\SerialNotes.csproj",
         "projectName": "SerialNotes",
-        "projectPath": "C:\\Users\\alxan\\Desktop\\SerialNotes\\SerialNotes\\SerialNotes\\SerialNotes.csproj",
+        "projectPath": "C:\\Users\\alxan\\Git\\SerialNotes\\SerialNotes\\SerialNotes\\SerialNotes.csproj",
         "packagesPath": "C:\\Users\\alxan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alxan\\Desktop\\SerialNotes\\SerialNotes\\SerialNotes\\obj\\",
+        "outputPath": "C:\\Users\\alxan\\Git\\SerialNotes\\SerialNotes\\SerialNotes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

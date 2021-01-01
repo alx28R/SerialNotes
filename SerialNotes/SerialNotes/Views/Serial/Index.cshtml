@@ -1,0 +1,126 @@
+﻿@using SerialNotes.Models;
+@model IEnumerable<SerialsSQL>;
+
+<section class="serial">
+    <div class="container">
+        <div data-content-notes class="serial-inner">
+
+            @foreach (var el in Model)
+            {
+                <div class="serial__info info">
+                    <div class="info__img">
+                        @*<img src="#" alt="Alternate Text" />*@
+                    </div>
+                    <div class="info__serial-content serial-content">
+                        <div class="serial-content__container">
+                            <div class="serial-content__header">
+                                <h3 class="title-serial">@el.SerialName</h3>
+                                <div class="serial-content__btns">
+                                    <button class="btn" onclick="EditModal('@Url.Action("Edit", "Serial", new { id = el.SerialId}, Context.Request.Scheme)')"><i class="fas fa-edit"></i></button>
+                                    <button class="btn" onclick="DeleteModal('@Url.Action("Delete", "Serial", new { id = el.SerialId}, Context.Request.Scheme)')"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                            <div class="info__info-created">
+                                <p>
+                                    Страна:
+                                    @if (!string.IsNullOrEmpty(el.Country))
+                                    {
+                                        <span>
+                                            @el.Country
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span>
+                                            Неизвестно
+                                        </span>
+                                    }
+                                </p>
+                                <p>
+                                    Режисер:
+                                    @if (!string.IsNullOrEmpty(el.Producer))
+                                    {
+                                        <span>
+                                            @el.Producer
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span>
+                                            Неизвестно
+                                        </span>
+                                    }
+                                </p>
+                                <p>
+                                    Дата релиза:
+                                    @if (el.ReleaseDate != null)
+                                    {
+                                     DateTime date = (DateTime)el.ReleaseDate;
+                                    <span> @date.ToString("dd.MM.yyyy") </span>
+                                    }
+                                    else
+                                    {
+                                        <span>
+                                            Неизвестно
+                                        </span>
+                                    }
+
+                                </p>
+                            </div>
+                            <div class="info__descr">
+
+                                @if (string.IsNullOrEmpty(el.SerialDescription))
+                                {
+                                    <p>Описание отсутствует</p>
+                                }
+                                else
+                                {
+                                    <p>@el.SerialDescription</p>
+                                }
+
+                            </div>
+                        </div>
+                        
+                        <div class="serial__parts-carousel">
+                            @if (el.PartsSerials != null || el.PartsSerials.Count() != 0)
+                            {
+
+                                @foreach (var part in el.PartsSerials)
+                                {
+                                  
+                            <div class="parts-carousel__item">
+                                <button class="btn-part-del" onclick="PartDelete('@Url.Action("DeletePart", "Serial", new {id = part.PartId}, Context.Request.Scheme)')"><i class="fas fa-times"></i></button>
+                                <p>Сезон <span>@part.Part</span></p>
+                                <p>Серия <span>@part.Season</span></p>
+                                <form asp-action="Part" asp-controller="Serial" data-part="@part.PartId">
+                                    <input type="hidden" value="@part.PartId" asp-for="@part.PartId" />
+                                    <label>Посмотрено</label>
+                                    @if (part.IsViewed == true)
+                                    {
+                                        <input asp-for="@part.IsViewed" type="checkbox" onclick="PartChecked(this, @part.PartId);" />
+                                    }
+                                    else
+                                    {
+                                        <input asp-for="@part.IsViewed" type="checkbox" onclick="PartChecked(this, @part.PartId);" />
+                                    }
+                                </form>
+                            </div>
+
+                                }
+
+                            }
+                            <div class="parts-carousel__item">
+                                <button class="btn-part-add" onclick="PartAddModal('@Url.Action("AddPart", "Serial", new {id = el.SerialId}, Context.Request.Scheme)')">+</button>
+                            </div>
+                        </div>
+                </div>
+             </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+@section Scripts{
+    <script src="~/js/serial-script.js"></script>
+}

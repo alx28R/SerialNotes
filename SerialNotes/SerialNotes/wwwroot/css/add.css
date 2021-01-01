@@ -10,6 +10,16 @@
     margin-right: 5px;
 }
 
+.add__header-add nav{
+    width: 425px;
+}
+
+.header-add__title-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .form-add {
     padding-top: 15px;
     padding-right: 5px;
@@ -125,4 +135,13 @@
 
 .notify-content {
     margin: 10px 0;
+}
+
+.serial-input{
+    width: 100%;
+    margin-right: 10px;
+}
+
+.serial-input input{
+    width: 100%;
 }

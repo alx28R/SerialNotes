@@ -1,0 +1,39 @@
+﻿@using SerialNotes.Models;
+@model SerialsSQL
+
+<div>
+
+    <form class="form-add" asp-action="SerialPush" asp-controller="Add" onsubmit="SerialAdd(this); return false;">
+
+        <div class="form-add__group">
+            <div class="form-add__item form-add__title">
+                <label class="form-add__label" asp-for="SerialName"></label>
+                <input class="title__input" asp-for="SerialName" type="text" autocomplete="off" />
+            </div>
+            <div class="form-add__item ">
+                <label class="form-add__label" asp-for="ReleaseDate"></label>
+                <input data-date-picker asp-for="ReleaseDate" type="date" />
+            </div>
+        </div>
+        <div class="form-add__group">
+            <div class="form-add__item serial-input">
+                <label class="form-add__label" asp-for="Country"></label>
+                <input asp-for="Country" type="text" autocomplete="off" />
+            </div>
+            <div class="form-add__item serial-input">
+                <label class="form-add__label" asp-for="Producer"></label>
+                <input asp-for="Producer" type="text" autocomplete="off" />
+            </div>
+        </div>
+        <div class="form-add__item">
+            <label class="form-add__label" asp-for="SerialDescription"></label>
+            <textarea class="form-add__textarea" asp-for="SerialDescription">
+        
+            </textarea>
+        </div>
+        <div class="form-add__item form-add__submit">
+            <input type="submit" value="Добавить" />
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,41 @@
+﻿@using SerialNotes.Models
+@model PartsSerial;
+
+<div id="modal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="confirm-form__header add-part">
+                <h2 class="confirm-form__title">Добавление серии</h2>
+            </div>
+
+            <form data-add class="confirm-form" asp-action="AddPart" asp-controller="Serial">
+
+                <input asp-for="SerialId" type="hidden" value="@Model.SerialId" />
+
+                <div class="form-add__group ">
+                    <div class="form-add__item serial-input">
+                        <label class="form-add__label" asp-for="Season">Сезон</label>
+                        <input asp-for="Season" type="number" min="1" autocomplete="off" />
+                    </div>
+                    <div class="form-add__item serial-input">
+                        <label class="form-add__label" asp-for="Part">Серия</label>
+                        <input asp-for="Part" type="number" min="1" autocomplete="off" />
+                    </div>
+                </div>
+
+                <div class="form-add__item item-checkbox">
+                    <label asp-for="IsViewed">Посмотрено</label>
+                    <input data-check asp-for="IsViewed" type="checkbox" checked />
+                </div>
+
+                <div class="form-edit__footer">
+                    <input type="submit" class="btn__form" name="name" value="Сохранить" />
+                    <input type="button" class="btn__form" onclick="CloseModal()" value="Отмена" />
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>

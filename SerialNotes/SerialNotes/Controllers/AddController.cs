@@ -22,9 +22,10 @@ namespace SerialNotes.Controllers
         {
             SerialsVM model = new SerialsVM();
             try
-            {             
+            {
                 model.Serials = await db.Serials.FromSqlRaw("SerialsSelect").ToListAsync();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return NotFound(ex.Message);
             }
@@ -32,15 +33,15 @@ namespace SerialNotes.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add([Bind("NoteTitle", "SerialName", "Part", "Season", "DateAdding", "Comment", "Rating")]NotesSQL notes)
+
+        public async Task<IActionResult> Add([Bind("NoteTitle", "SerialName", "Part", "Season", "DateAdding", "Comment", "Rating")] NotesSQL notes)
         {
             IResponse response = new Response();
 
             try
             {
 
-                if (notes.Comment == null) notes.Comment = ""; 
+                if (notes.Comment == null) notes.Comment = "";
 
                 List<SqlParameter> parameters = new List<SqlParameter>();
                 parameters.AddRange(new List<SqlParameter>() {
@@ -64,5 +65,61 @@ namespace SerialNotes.Controllers
             }
             return Json(response);
         }
-    }   
+
+
+        [HttpGet]
+        public async Task<IActionResult> AddNotes()
+        {
+            IResponse response = new Response();
+            SerialsVM model = new SerialsVM();
+            try
+            {
+                model.Serials = await db.Serials.FromSqlRaw("SerialsSelect").ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+            response.RenderHtml = Helper.RenderRazorViewToString(this, "Partials/AddNotes", model);
+            return Json(response);
+        }
+
+        [HttpGet]
+        public IActionResult AddSerial()
+        {
+            IResponse response = new Response();
+            response.RenderHtml = Helper.RenderRazorViewToString(this, "Partials/AddSerial", new SerialsSQL());
+            return Json(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SerialPush([Bind("SerialName", "ReleaseDate", "Country", "Producer", "SerialDescription")] SerialsSQL serial)
+        {
+            IResponse response = new Response();
+            try
+            {
+
+                List<SqlParameter> parameters = new List<SqlParameter>();
+                parameters.AddRange(new List<SqlParameter>() {
+                new SqlParameter("@serialName", serial.SerialName),
+                new SqlParameter("@country", serial.Country),
+                new SqlParameter("@releaseDate", serial.ReleaseDate),
+                new SqlParameter("@producer", serial.Producer),
+                new SqlParameter("@serialDescription", serial.SerialDescription)                
+                });
+
+                string proc = "SerialsInsertSimple @serialName, @country, @releaseDate, @producer, @serialDescription";
+                response.Status = await db.Database.ExecuteSqlRawAsync(proc, parameters);
+                response.RenderHtml = Helper.RenderRazorViewToString(this, "Partials/AddNotification", response.Status);
+
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex);
+            }
+            return Json(response);
+        }
+
+
+    }
 }

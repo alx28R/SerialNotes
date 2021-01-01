@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4020JPoHtZJ9RfUtTDifxD0ZyjfRPh2vvPxAnLDEhOhwxig1HXCqWbb5g//HJwhGkpsy2n/0vZz8/Nb9KrOLqg==",
+  "dgSpecHash": "5jbI+HdPKL18poPZHq2dcTD1cjbordGwLi3Vy2rRzG0oYxsf34FOFk698pf3edMUnWfRZ9qSWJpIP0aXfASPJw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alxan\\Desktop\\SerialNotes\\SerialNotes\\SerialNotes\\SerialNotes.csproj",
+  "projectFilePath": "C:\\Users\\alxan\\Git\\SerialNotes\\SerialNotes\\SerialNotes\\SerialNotes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alxan\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\alxan\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

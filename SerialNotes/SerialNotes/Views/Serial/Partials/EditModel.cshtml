@@ -1,0 +1,46 @@
+﻿@using SerialNotes.Models;
+@model SerialsSQL
+
+<div id="modal" class="modal">
+    <div class="modal-dialog modal-note-edit">
+        <div class="modal-content">
+
+            <form data-edit class="form-add" asp-action="Edit" asp-controller="Serial">
+                <input asp-for="SerialId" type="hidden" value="@Model.SerialId" />
+                <div class="form-add__group">
+                    <div class="form-add__item form-add__title">
+                        <label class="form-add__label" asp-for="SerialName"></label>
+                        <input class="title__input" asp-for="SerialName" type="text" autocomplete="off" />
+                    </div>
+                    <div class="form-add__item ">
+                        <label class="form-add__label" asp-for="ReleaseDate"></label>
+                        <input data-date-picker asp-for="ReleaseDate" type="date" />
+                    </div>
+                </div>
+                <div class="form-add__group">
+                    <div class="form-add__item serial-input">
+                        <label class="form-add__label" asp-for="Country"></label>
+                        <input asp-for="Country" type="text" autocomplete="off" />
+                    </div>
+                    <div class="form-add__item serial-input">
+                        <label class="form-add__label" asp-for="Producer"></label>
+                        <input asp-for="Producer" type="text" autocomplete="off" />
+                    </div>
+                </div>
+                <div class="form-add__item">
+                    <label class="form-add__label" asp-for="SerialDescription"></label>
+                    <textarea class="form-add__textarea" asp-for="SerialDescription">
+        
+            </textarea>
+                </div>
+                <div class="form-edit__footer">
+                    <input type="submit" class="btn__form" name="name" value="Сохранить" />
+                    <input type="button" class="btn__form" onclick="CloseModal()" value="Отмена" />
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+</div>

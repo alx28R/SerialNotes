@@ -1,15 +1,13 @@
 ﻿'use strict'
 
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", (e) => {
     SetDate();
-
 })
 
 
 
 async function Add(form) {
-
     if (FormValid(form) === true) {
         await fetch(form.action, {
             method: 'POST',
@@ -19,6 +17,7 @@ async function Add(form) {
         }).then(data => {
             if (data.status > 0 && data.status !== null) {
                 form.reset()
+                SetDate()
             }
             document.body.innerHTML += data.renderHtml
 
@@ -31,7 +30,6 @@ async function Add(form) {
         })
     }
 }
-
 
 function SetDate() {
     const date = new Date();
@@ -60,6 +58,21 @@ function FormValid(form) {
     return result;
 }
 
+function FormValidTwoXD(form) {
+    let result = true;
+
+    Array.from(form.elements).forEach((element, i) => {       
+        if (element.value === null || element.value === '') {
+            element.classList.add('err');
+            element.addEventListener('focus', () => {
+                element.classList.remove('err')
+            })
+            result = false;
+        }
+    });
+    return result;
+}
+
 
 function OpenListSerial() {
 
@@ -84,4 +97,53 @@ function OpenListSerial() {
         })
     })
 
+}
+
+
+const btns = document.querySelectorAll('[data-btn-add]')
+btns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        if (!btn.className.includes('btn__filter_activ')) {
+            btn.classList.add('btn__filter_activ')
+        }
+    })
+    btn.classList.remove('btn__filter_activ')
+})
+
+
+async function AddView(url) {
+
+
+    await fetch(url, {
+        method: 'GET'
+    }).then(res => {
+        return res.json();
+    }).then(data => {
+        document.querySelector('[data-add-content]').innerHTML = data.renderHtml       
+    }).catch(ex => {
+        console.error(ex)
+    })
+    SetDate()
+}
+
+async function SerialAdd(form) {
+    if (FormValidTwoXD(form)) {
+        await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form)
+        }).then(res => {
+            return res.json()
+        }).then(data => {
+            if (data.status > 0 && data.status !== null) {
+                form.reset()
+                SetDate()
+            }
+            document.body.innerHTML += data.renderHtml
+
+            const modal = document.querySelector('#modal-notify')
+            document.querySelector('[data-close]').addEventListener('click', (e) => {
+                modal.parentNode.removeChild(modal)
+            })
+        })
+    }
 }
